@@ -25,6 +25,15 @@ app.get('/', (req: Request, res: Response) => {
     res.send('Polling System API is running');
 });
 
+// Health check endpoint for keeping Render free tier active
+app.get('/health', (req: Request, res: Response) => {
+    res.status(200).json({
+        status: 'OK',
+        timestamp: new Date().toISOString(),
+        uptime: process.uptime()
+    });
+});
+
 app.get('/api/polls', getPolls);
 
 // Socket connection
