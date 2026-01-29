@@ -25,7 +25,7 @@ export const usePollTimer = (startTime: string | null, duration: number) => {
             }
         };
 
-        updateTimer(); // Initial call
+        updateTimer(); 
         const interval = setInterval(updateTimer, 1000);
 
         return () => clearInterval(interval);

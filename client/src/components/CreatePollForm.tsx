@@ -19,8 +19,6 @@ const CreatePollForm: React.FC = () => {
         e.preventDefault();
         if (socket && question && options.every(o => o.trim())) {
             socket.emit('create_poll', { question, options, duration });
-            // Reset form or separate state?
-            // For now, maybe clear logic or just show "Active Poll" in parent
         }
     };
 

@@ -1,10 +1,6 @@
-/**
- * Keep-Alive utility for Render free tier
- * Pings the server every 12 minutes to prevent it from spinning down
- */
 
-const PING_INTERVAL = 12 * 60 * 1000; // 12 minutes in milliseconds
-const SERVER_URL = import.meta.env.VITE_SERVER_URL || 'http://localhost:5000';
+const PING_INTERVAL = 12 * 60 * 1000; 
+const SERVER_URL = 'https://interviewio.onrender.com';
 
 let keepAliveInterval: number | null = null;
 
@@ -27,26 +23,18 @@ const pingServer = async () => {
     }
 };
 
-/**
- * Start the keep-alive mechanism
- */
 export const startKeepAlive = () => {
     if (keepAliveInterval) {
         console.log('Keep-alive already running');
         return;
     }
 
-    // Initial ping
     pingServer();
 
-    // Set up interval
     keepAliveInterval = setInterval(pingServer, PING_INTERVAL);
     console.log('🚀 Keep-alive started - pinging every 12 minutes');
 };
 
-/**
- * Stop the keep-alive mechanism
- */
 export const stopKeepAlive = () => {
     if (keepAliveInterval) {
         clearInterval(keepAliveInterval);
@@ -55,9 +43,6 @@ export const stopKeepAlive = () => {
     }
 };
 
-/**
- * Check if keep-alive is running
- */
 export const isKeepAliveActive = () => {
     return keepAliveInterval !== null;
 };

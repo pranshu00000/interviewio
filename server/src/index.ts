@@ -13,7 +13,7 @@ const app = express();
 const httpServer = createServer(app);
 const io = new Server(httpServer, {
     cors: {
-        origin: "*", // Allow all for now, lock down later
+        origin: "*", 
         methods: ["GET", "POST"]
     }
 });
@@ -25,7 +25,6 @@ app.get('/', (req: Request, res: Response) => {
     res.send('Polling System API is running');
 });
 
-// Health check endpoint for keeping Render free tier active
 app.get('/health', (req: Request, res: Response) => {
     res.status(200).json({
         status: 'OK',
@@ -36,11 +35,9 @@ app.get('/health', (req: Request, res: Response) => {
 
 app.get('/api/polls', getPolls);
 
-// Socket connection
 io.on('connection', (socket) => {
     console.log('A user connected:', socket.id);
 
-    // Register handlers
     registerPollHandlers(io, socket);
 
     socket.on('disconnect', () => {

@@ -10,7 +10,7 @@ interface IPoll {
     _id: string;
     question: string;
     options: IPollOption[];
-    startTime: string; // Date string
+    startTime: string; 
     duration: number;
     isActive: boolean;
     createdAt: string;
@@ -25,7 +25,7 @@ const PollHistory: React.FC = () => {
     useEffect(() => {
         const fetchPolls = async () => {
             try {
-                const response = await fetch('http://localhost:5000/api/polls');
+                const response = await fetch('https://interviewio.onrender.com/api/polls');
                 if (!response.ok) {
                     throw new Error('Failed to fetch polls');
                 }
@@ -57,10 +57,6 @@ const PollHistory: React.FC = () => {
                     <h1 className="text-3xl font-bold text-gray-900">
                         View <span className="text-gray-900">Poll History</span>
                     </h1>
-                    {/* Chat bubble icon bottom right fixed or context? Image shows it bottom right of screen. 
-                         For now, keeping "Back" simple or maybe stick to mockup which has no explicit back button but probably browser back.
-                         I'll keep a subtle back button for usability.
-                     */}
                     <button
                         onClick={() => navigate('/')}
                         className="text-gray-400 hover:text-gray-600 transition"
@@ -72,10 +68,6 @@ const PollHistory: React.FC = () => {
                 </div>
 
                 <div className="space-y-8 relative">
-                    {/* Scroll bar indicator from mockup? 
-                        The mockup shows a custom scroll bar on the right. 
-                        Browser default is fine for now.
-                    */}
 
                     {polls.length === 0 ? (
                         <div className="text-center py-10 text-gray-500">

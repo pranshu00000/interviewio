@@ -9,7 +9,7 @@ export interface IPoll extends Document {
     question: string;
     options: IPollOption[];
     startTime: Date | null;
-    duration: number; // in seconds
+    duration: number; 
     isActive: boolean;
     createdAt: Date;
 }

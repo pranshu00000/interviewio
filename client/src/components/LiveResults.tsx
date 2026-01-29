@@ -1,6 +1,5 @@
 import React from 'react';
 
-// Define the shape of the poll prop
 interface PollOption {
     text: string;
     votes: number;
@@ -9,7 +8,6 @@ interface PollOption {
 interface Poll {
     question: string;
     options: PollOption[];
-    // ... other fields
 }
 
 interface LiveResultProps {
